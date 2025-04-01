@@ -40,6 +40,13 @@ $NF == "/" {
   printf "Total: %s Used: %s Available: %s Use: %s \n", $2, $3, $4, $5
 }'
 
+# AWK script to extract top 5 CPU processes and print it.
+# Stored in a read-only variable for reuse.
+readonly PRINT_TOP_PROCESSES='
+NR == 7; NR > 7 && NR <= 12 {
+	print $0
+}'
+
 while true; do
   # Refresh screen.
   clear
@@ -61,6 +68,11 @@ while true; do
 
   # Run df, pass output to AWK, and run AWK script.
   df -h | awk "${PRINT_DISK_USAGE}"
+
+  printf "#### Top 5 Processes by CPU Usage ####\n"
+
+  # Run top, pass output to AWK, and run AWK script.
+  top -o %CPU -b -n 1 | awk "${PRINT_TOP_PROCESSES}"
 
   # Wait for five seconds before refresh.
   sleep 5
