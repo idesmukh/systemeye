@@ -60,10 +60,10 @@ while true; do
   # Run top, pass output to AWK, and run AWK script.
   top -b -n 1 | awk "${PRINT_CPU_USAGE}"
 
-  printf "#### Total Memory Usage ####\n"
+  printf "#### Total Memory Usage in KB ####\n"
 
   # Run free, pass output to AWK, and run AWK script.
-  free -h | awk "${PRINT_MEMORY_USAGE}"
+  free -k | awk "${PRINT_MEMORY_USAGE}"
 
   printf "#### Total Disk Usage ####\n"
 
