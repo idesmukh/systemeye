@@ -42,6 +42,8 @@ $NF == "/" {
 
 # AWK script to extract top 5 CPU processes and print it.
 # Stored in a read-only variable for reuse.
+# Prints the header at row 7 as is with NR == 7.
+# Prints the top 5 processes which are 8, 9, 10, 11, 12 with NR > 7 && NR <= 12.
 readonly PRINT_TOP_PROCESSES='
 NR == 7; NR > 7 && NR <= 12 {
 	print $0
@@ -73,6 +75,12 @@ while true; do
 
   # Run top, pass output to AWK, and run AWK script.
   top -o %CPU -b -n 1 | awk "${PRINT_TOP_PROCESSES}"
+
+  printf "#### Top 5 Processes by Memory Usage ####\n"  
+
+  # Reuse the PRINT_TOP_PROCESSES AWK script.
+  # Change the sort override from %CPU to %MEM. 
+  top -o %MEM -b -n 1 | awk "${PRINT_TOP_PROCESSES}"
 
   # Wait for five seconds before refresh.
   sleep 5
