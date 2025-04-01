@@ -1,14 +1,15 @@
 # Systemeye
 
-Systemeye is a Bash script to analyze basic server performance statistics on Ubuntu systems. It is designed for system monitoring and debugging.
+Systemeye is a bash script to analyze basic server performance statistics on Ubuntu systems. It is designed for system monitoring and debugging.
 
 ## Features
 
-- **Total CPU Usage Monitoring:** Displays the overall CPU utilization percentage.
-- **Total Memory Usage Monitoring:** Shows free and used memory, including percentages.
-- **Total Disk Usage Monitoring:** Provides free and used disk space.
-- **Top 5 CPU-Consuming Processes:** Lists the top 5 processes sorted by CPU usage.
-- **Top 5 Memory-Consuming Processes:** Lists the top 5 processes sorted by memory usage.
+Systemeye prints the following performance statistics to the terminal and refreshes every 5 seconds.
+- Total CPU Usage
+- Total Memory Usage
+- Total Disk Usage
+- Top 5 Processes by CPU Usage
+- Top 5 Processes by Memory Usage
 
 ## Getting Started
 
@@ -21,8 +22,8 @@ Systemeye is a Bash script to analyze basic server performance statistics on Ubu
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/idesmukh/ubuntu-stats-monitor.git
-    cd ubuntu-stats-monitor
+    git clone https://github.com/idesmukh/systemeye.git
+    cd systemeye
     ```
 
 2.  **Make the script executable:**
@@ -35,7 +36,7 @@ Systemeye is a Bash script to analyze basic server performance statistics on Ubu
 Run the script from your terminal:
 
 ```bash
-./server-stats.sh
+./systemeye.sh
 ```
 
 ## License
