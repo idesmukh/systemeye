@@ -4,12 +4,18 @@
 #
 # SPDX-License-Identifier: MIT
 #
-# Systemeye.
-# Bash script to analyze server performance statistics in real-time.
+# Systemeye
 #
 
 # Detect pipeline failure in case of any command failure.
 set -o pipefail
+
+# The format of AWK scripts comprises:
+# pattern { action }
+# pattern { action }
+# ...
+#
+# Reference: http://gnu.org/software/gawk/manual/gawk.html#toc-Running-awk-and-gawk
 
 # AWK script to extract idle CPU % and print it.
 # Stored in a read-only variable for reuse.
@@ -81,6 +87,6 @@ while true; do
   # Change the sort override from %CPU to %MEM. 
   top -o %MEM -b -n 1 | awk "${PRINT_TOP_PROCESSES}"
 
-  # Wait for five seconds before refresh.
+  # Wait for 5 seconds before loop termination.
   sleep 5
 done
