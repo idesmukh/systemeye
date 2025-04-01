@@ -36,7 +36,6 @@ readonly PRINT_MEMORY_USAGE='
 # Stored in a read-only variable for reuse.
 readonly PRINT_DISK_USAGE='
 $NF == "/" {
-  disk_size = $2
   printf "Total: %s Used: %s Available: %s Use: %s \n", $2, $3, $4, $5
 }'
 
