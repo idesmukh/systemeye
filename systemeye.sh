@@ -32,6 +32,14 @@ readonly PRINT_MEMORY_USAGE='
   printf "Total: %s Used: %s (%.1f%%) Available: %s (%.1f%%)\n", memory_total, memory_used, memory_used_percent, memory_available, memory_available_percent
 }'
 
+# AWK script to extract disk usage and print it.
+# Stored in a read-only variable for reuse.
+readonly PRINT_DISK_USAGE='
+$NF == "/" {
+  disk_size = $2
+  printf "Total: %s Used: %s Available: %s Use: %s \n", $2, $3, $4, $5
+}'
+
 while true; do
   # Refresh screen.
   clear
@@ -48,6 +56,11 @@ while true; do
 
   # Run free, pass output to AWK, and run AWK script.
   free -h | awk "${PRINT_MEMORY_USAGE}"
+
+  printf "#### Total Disk Usage ####\n"
+
+  # Run df, pass output to AWK, and run AWK script.
+  df -h | awk "${PRINT_DISK_USAGE}"
 
   # Wait for five seconds before refresh.
   sleep 5
