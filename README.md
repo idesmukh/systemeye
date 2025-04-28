@@ -28,7 +28,7 @@ Systemeye prints the following performance statistics to the terminal and refres
 
 2.  **Make the script executable:**
     ```bash
-    chmod +x server-stats.sh
+    chmod +x systemeye.sh
     ```
 
 ### Usage
