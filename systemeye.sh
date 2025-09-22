@@ -1,12 +1,4 @@
 #!/bin/bash
-#
-# Copyright (c) 2025 Ibad Desmukh
-#
-# SPDX-License-Identifier: MIT
-#
-# Systemeye
-#
-
 # Detect pipeline failure in case of any command failure.
 set -o pipefail
 
